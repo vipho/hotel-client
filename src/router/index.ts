@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import {nextTick} from 'vue';
-import Home from '@/views/Home.vue'
 import {t} from '@/utils/locale'
+import Home from '@/views/Home/Home.vue'
+import Guests from '@/views/Guests/Guests.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,7 +10,15 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Home,
     meta: {
-      title: t('main-page'),
+      title: t('home-page'),
+    },
+  },
+  {
+    path: '/guests',
+    name: 'Guests',
+    component: Guests,
+    meta: {
+      title: t('guests-page'),
     },
   },
 ]
