@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <WrapperAuth></WrapperAuth>
+  <div class="container"><div class="row"><div class="col"><h1><p>{{ $t('key1') }}</p></h1></div></div></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import {defineComponent} from 'vue';
+import WrapperAuth from '../components/WrapperAuth.vue';
 
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld,
+    WrapperAuth,
   },
 });
 </script>
+
+<style scoped lang="scss">
+</style>
