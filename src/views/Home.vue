@@ -1,6 +1,6 @@
 <template>
   <WrapperAuth></WrapperAuth>
-  <div class="container"><div class="row"><div class="col"><h1><p>{{ $t('key1') }}</p></h1></div></div></div>
+  <div class="container"><div class="row"><div class="col p-3"><h1>{{ $t('hello') }}</h1></div></div></div>
 </template>
 
 <script lang="ts">
@@ -12,7 +12,7 @@ export default defineComponent({
   components: {
     WrapperAuth,
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

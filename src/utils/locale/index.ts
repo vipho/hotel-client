@@ -15,24 +15,19 @@ export const getLang = () : string => {
     return lang
 }
 
-export const initLang = () => {
-    i18next.init({
-        lng: getLang(),
-        debug: process.env.NODE_ENV !== "production",
-        resources: {
-            en: {
-                translation: {
-                    "key1": "Hello world!"
-                }
-            },
-            ru: {
-                translation: {
-                    "key1": "Привет мир!"
-                }
-            },
-        }
-    })
-}
+i18next.init({
+    lng: getLang(),
+    debug: process.env.NODE_ENV !== "production",
+    resources: {
+        ru: {
+            translation: {
+                "hello": "Hello world!",
+                "project": "HotelMan",
+                "main-page": "Главная",
+            }
+        },
+    }
+})
 
 export const t = (key: string) : string => {
     return i18next.t(key)
