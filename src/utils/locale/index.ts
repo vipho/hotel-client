@@ -22,7 +22,7 @@ i18next.init({
         ru: {
             translation: {
                 'hello': 'Hello world!',
-                'project': 'HotelMan',
+                'project': 'VIPHO.Hotel',
                 'homePage': 'Главная',
                 'guestsPage': 'Гости',
                 'booksPage': 'Брони',
