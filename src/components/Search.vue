@@ -16,7 +16,7 @@
       <option value="1">{{ $t('statusLiving') }}</option>
     </select>
   </div>
-  <div class="pt-3 d-flex _applied">
+  <div class="_applied">
     <span class="badge bg-info _badge"><span class="_info">Пример длинного поиска. Пример длинного поиска</span><span class="_close">[x]</span></span>
     <span class="badge bg-info _badge"><span class="_info">#1</span><span class="_close">[x]</span></span>
     <span class="badge bg-info _badge"><span class="_info">{{$t('statusLiving')}}</span><span class="_close">[x]</span></span>
@@ -45,24 +45,18 @@ export default defineComponent({
 }
 
 ._applied {
-
-  ._badge:not(:first-child) {
-    margin-left: 1rem;
-
-    ._close {
-      margin-left: .5rem;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
 
   ._badge {
+    margin-left: 1rem;
     display: flex;
+    margin-top: 1rem;
+    max-width: 300px;
+    overflow: hidden;
 
     ._info {
-      max-width: 300px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

@@ -1,5 +1,8 @@
 <template>
   <WrapperAuth>
+    <div class="container py-3">
+      <Search></Search>
+    </div>
     <div class="container py-3 overflow-x-auto">
       <div class="overflow-auto">
         <table class="table table-hover _table">
@@ -37,10 +40,12 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import WrapperAuth from '../../components/WrapperAuth.vue';
+import Search from "@/components/Search.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
+    Search,
     WrapperAuth,
   },
 })
