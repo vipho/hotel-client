@@ -4,16 +4,19 @@
       <Timeline :rooms="rooms"></Timeline>
     </div>
     <div class="container py-3">
+      <Search></Search>
+    </div>
+    <div class="container py-3">
       <div class="overflow-auto">
         <table class="table table-hover _table">
           <thead>
           <tr>
             <th scope="col"></th>
             <th scope="col">{{$t('room')}}</th>
-            <th scope="col">{{$t('first-name')}}</th>
-            <th scope="col">{{$t('last-name')}}</th>
+            <th scope="col">{{$t('firstName')}}</th>
+            <th scope="col">{{$t('lastName')}}</th>
             <th scope="col">{{$t('dates')}}</th>
-            <th scope="col">{{$t('booking-service')}}</th>
+            <th scope="col">{{$t('bookingService')}}</th>
             <th scope="col">{{$t('status')}}</th>
           </tr>
           </thead>
@@ -25,7 +28,7 @@
             <td>Иванов</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Booking</td>
-            <td><span class="badge bg-primary">{{$t('status-living')}}</span></td>
+            <td><span class="badge bg-primary">{{$t('statusLiving')}}</span></td>
           </tr>
           <tr>
             <th scope="row">1</th>
@@ -34,7 +37,7 @@
             <td>Иванов</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Островок</td>
-            <td><span class="badge bg-primary">{{$t('status-living')}}</span></td>
+            <td><span class="badge bg-primary">{{$t('statusLiving')}}</span></td>
           </tr>
           <tr>
             <th scope="row">1</th>
@@ -43,7 +46,7 @@
             <td>Иванов</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td></td>
-            <td><span class="badge bg-primary">{{$t('status-living')}}</span></td>
+            <td><span class="badge bg-primary">{{$t('statusLiving')}}</span></td>
           </tr>
           </tbody>
         </table>
@@ -56,10 +59,12 @@
 import {defineComponent} from 'vue';
 import WrapperAuth from '@/components/WrapperAuth.vue';
 import Timeline from "@/components/Timeline.vue";
+import Search from "@/components/Search.vue";
 
 export default defineComponent({
   name: "Books",
   components: {
+    Search,
     Timeline,
     WrapperAuth,
   },
@@ -100,6 +105,6 @@ export default defineComponent({
 @import "~@/style/utils";
 
 ._table {
-  min-width: 750px;
+  min-width: 1000px;
 }
 </style>

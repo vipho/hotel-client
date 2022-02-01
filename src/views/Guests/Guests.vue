@@ -6,8 +6,8 @@
           <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">{{$t('first-name')}}</th>
-            <th scope="col">{{$t('last-name')}}</th>
+            <th scope="col">{{$t('firstName')}}</th>
+            <th scope="col">{{$t('lastName')}}</th>
             <th scope="col">{{$t('room')}}</th>
             <th scope="col">{{$t('status')}}</th>
           </tr>
@@ -18,7 +18,7 @@
             <td>Иван</td>
             <td>Иванов</td>
             <td>#4</td>
-            <td><span class="badge bg-primary">{{$t('status-living')}}</span></td>
+            <td><span class="badge bg-primary">{{$t('statusLiving')}}</span></td>
           </tr>
           <tr>
             <th scope="row">2</th>

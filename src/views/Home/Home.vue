@@ -4,15 +4,15 @@
       <div class="_form">
         <form @submit.prevent="">
           <div class="mb-4">
-            <label class="form-label">{{ $t("user-nickname") }}</label>
-            <input type="email" class="form-control" placeholder="mynick">
+            <label class="form-label">{{ $t("userNickname") }}</label>
+            <input type="email" class="form-control" :placeholder="$t('userNicknamePlaceholder')">
           </div>
           <div class="mb-4">
-            <label class="form-label">{{ $t("user-password") }}</label>
-            <input type="password" class="form-control" placeholder="• • •">
+            <label class="form-label">{{ $t("userPassword") }}</label>
+            <input type="password" class="form-control" :placeholder="$t('userPasswordPlaceholder')">
           </div>
           <div class="mb-4">
-            <button type="submit" class="btn btn-primary w-100">{{$t("sign-in")}}</button>
+            <button type="submit" class="btn btn-primary w-100">{{$t("signIn")}}</button>
           </div>
           <div class="mb-4">
             <div class="g-recaptcha" :data-sitekey="$config.GOOGLE_RECAPTCHA_KEY"></div>

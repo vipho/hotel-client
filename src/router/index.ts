@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Home,
     meta: {
-      title: t('home-page'),
+      title: t('homePage'),
     },
   },
   {
@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Books',
     component: Books,
     meta: {
-      title: t('books-page'),
+      title: t('booksPage'),
     },
   },
   {
@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Guests',
     component: Guests,
     meta: {
-      title: t('guests-page'),
+      title: t('guestsPage'),
     },
   },
 ]

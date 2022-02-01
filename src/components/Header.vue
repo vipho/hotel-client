@@ -8,13 +8,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link active-class="active" class="nav-link" :to="{name: 'Books'}">{{$t('books-page')}}</router-link>
+            <router-link active-class="active" class="nav-link" :to="{name: 'Books'}">{{$t('booksPage')}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link active-class="active" class="nav-link" :to="{name: 'Guests'}">{{$t('guests-page')}}</router-link>
+            <router-link active-class="active" class="nav-link" :to="{name: 'Guests'}">{{$t('guestsPage')}}</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">{{$t('settings-page')}}</a>
+            <a class="nav-link" href="#">{{$t('settingsPage')}}</a>
           </li>
         </ul>
       </div>
