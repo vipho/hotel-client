@@ -1,33 +1,35 @@
 <template>
   <WrapperAuth>
-    <div class="container py-3">
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Имя</th>
-          <th scope="col">Фамилия</th>
-          <th scope="col">Номер</th>
-          <th scope="col">Статус</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Иван</td>
-          <td>Иванов</td>
-          <td>#4</td>
-          <td><span class="badge bg-primary">Проживает</span></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Ольга</td>
-          <td>Ивановна</td>
-          <td>#1</td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="container py-3 overflow-x-auto">
+      <div class="overflow-auto">
+        <table class="table table-hover _table">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">{{$t('first-name')}}</th>
+            <th scope="col">{{$t('last-name')}}</th>
+            <th scope="col">{{$t('room')}}</th>
+            <th scope="col">{{$t('status')}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Иван</td>
+            <td>Иванов</td>
+            <td>#4</td>
+            <td><span class="badge bg-primary">{{$t('status-living')}}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Ольга</td>
+            <td>Ивановна</td>
+            <td>#1</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </WrapperAuth>
 </template>
@@ -46,4 +48,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "~@/style/utils";
+
+._table {
+  min-width: 750px;
+}
 </style>

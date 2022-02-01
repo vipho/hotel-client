@@ -1,14 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">HotelMan</a>
+      <router-link class="navbar-brand" :to="{name: 'Home'}">{{$t('project')}}</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link active-class="active" class="nav-link" :to="{name: 'Home'}">{{$t('home-page')}}</router-link>
+            <router-link active-class="active" class="nav-link" :to="{name: 'Books'}">{{$t('books-page')}}</router-link>
           </li>
           <li class="nav-item">
             <router-link active-class="active" class="nav-link" :to="{name: 'Guests'}">{{$t('guests-page')}}</router-link>

@@ -1,7 +1,7 @@
 <template>
   <div class="_wrapper">
     <div class="_info">
-      <div class="_room-spacer">{{$t('room')}}</div>
+      <div class="_room">{{$t('room')}}</div>
       <div v-for="room in sortedRooms" class="_room">{{room.room}}</div>
     </div>
     <div class="_lines">
@@ -40,6 +40,7 @@ interface Room {
 }
 
 const size = 48
+const dayAmount = 90
 const oneDay = 86400000
 
 export default defineComponent({
@@ -71,7 +72,7 @@ export default defineComponent({
   computed: {
     timelineDates() {
       const dates = [];
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < dayAmount; i++) {
         const date = new Date(this.currentDay.getTime() + (i * oneDay))
         const months = t('months', { returnObjects: true });
 
@@ -115,7 +116,7 @@ export default defineComponent({
 @import "~@/style/utils";
 
 $_size: 48px;
-$_dayAmount: 60;
+$_dayAmount: 90;
 $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 
 ._wrapper {
@@ -124,16 +125,6 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 }
 
 ._info {
-  ._room-spacer {
-    height: $_size;
-    width: 100%;
-    padding: 0 16px;
-    font-size: 12px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   ._room {
     height: $_size;
     width: 100%;
