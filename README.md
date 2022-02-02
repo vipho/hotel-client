@@ -1,4 +1,4 @@
-# hotelman-front
+# hotel-client
 
 ## Project setup
 ```
