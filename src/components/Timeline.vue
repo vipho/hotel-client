@@ -61,14 +61,7 @@ export default defineComponent({
       return d
     })(),
   }),
-  watch: {
-    sortedRooms: {
-      handler(v: Room[]) {
-        console.log(v);
-      },
-      immediate: true
-    }
-  },
+  watch: {},
   computed: {
     timelineDates() {
       const dates = [];

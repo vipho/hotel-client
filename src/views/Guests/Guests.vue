@@ -34,6 +34,9 @@
         </table>
       </div>
     </div>
+    <div class="container py-3">
+      <Pagination></Pagination>
+    </div>
   </WrapperAuth>
 </template>
 
@@ -41,10 +44,12 @@
 import {defineComponent} from 'vue';
 import WrapperAuth from '../../components/WrapperAuth.vue';
 import Search from "@/components/Search.vue";
+import Pagination from "@/components/Pagination.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
+    Pagination,
     Search,
     WrapperAuth,
   },
@@ -56,5 +61,6 @@ export default defineComponent({
 
 ._table {
   min-width: 750px;
+  margin: 0;
 }
 </style>
