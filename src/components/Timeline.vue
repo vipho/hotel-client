@@ -1,22 +1,48 @@
 <template>
-  <div class="_wrapper">
-    <div class="_info">
-      <div class="_room">{{$t('room')}}</div>
-      <div v-for="room in sortedRooms" class="_room">{{room.room}}</div>
-    </div>
-    <div class="_lines">
-      <div class="_day-line">
-        <div v-for="dates in timelineDates" class="_day">
-          <div class="_box">
-            <div>{{ dates.month }}</div>
-            <div>{{ dates.day }}</div>
+  <div>
+    <div class="_wrapper">
+      <div class="_info">
+        <div class="_room">{{ $t('room') }}</div>
+        <div v-for="room in sortedRooms" class="_room">{{ room.room }}</div>
+      </div>
+      <div class="_lines">
+        <div class="_day-line">
+          <div v-for="dates in timelineDates" class="_day">
+            <div class="_box">
+              <div>{{ dates.month }}</div>
+              <div>{{ dates.day }}</div>
+            </div>
+          </div>
+        </div>
+        <div v-for="room in sortedRooms" class="_room-line">
+          <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}">
+            <div class="_box"></div>
           </div>
         </div>
       </div>
-      <div v-for="room in sortedRooms" class="_room-line">
-        <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}"><div class="_box"></div></div>
-      </div>
     </div>
+
+    <nav class="overflow-auto">
+      <ul class="pagination _pagination justify-content-end">
+        <li
+            class="page-item _item _no-select"
+            @click="currentDay = new Date(currentDay.getTime() - 1296000000)"
+        >
+          <span class="page-link _link">&laquo;</span>
+        </li>
+        <li
+            class="page-item _item disabled"
+        >
+          <span class="page-link _link">{{ dateToString(currentDay) }} - {{ dateToString(new Date(currentDay.getTime() + (2592000000 - 86400000))) }}</span>
+        </li>
+        <li
+            class="page-item _item _no-select"
+            @click="currentDay = new Date(currentDay.getTime() + 1296000000)"
+        >
+          <span class="page-link _link">&raquo;</span>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -40,7 +66,7 @@ interface Room {
 }
 
 const size = 48
-const dayAmount = 90
+const dayAmount = 30
 const oneDay = 86400000
 
 export default defineComponent({
@@ -67,10 +93,10 @@ export default defineComponent({
       const dates = [];
       for (let i = 0; i < dayAmount; i++) {
         const date = new Date(this.currentDay.getTime() + (i * oneDay))
-        const months = t('months', { returnObjects: true });
+        const months = t('months', {returnObjects: true});
 
         dates.push({
-          month: months[date.getMonth()],
+          month: months[date.getUTCMonth()],
           day: date.getUTCDate(),
         })
       }
@@ -102,6 +128,12 @@ export default defineComponent({
       })
     },
   },
+  methods: {
+    dateToString(date: Date) {
+      const months = t('months', {returnObjects: true});
+      return `${date.getUTCDate()} ${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+    },
+  },
 })
 </script>
 
@@ -109,12 +141,13 @@ export default defineComponent({
 @import "~@/style/utils";
 
 $_size: 48px;
-$_dayAmount: 90;
+$_dayAmount: 30;
 $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 
 ._wrapper {
   display: flex;
   background: $_light;
+  margin-bottom: 1rem;
 }
 
 ._info {
@@ -178,6 +211,22 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
           background: shade-color($primary, $btn-hover-bg-tint-amount);
         }
       }
+    }
+  }
+}
+
+._no-select {
+  user-select: none;
+}
+
+._pagination {
+  margin: 0;
+
+  ._item {
+    cursor: default;
+
+    ._link {
+      text-align: center;
     }
   }
 }
