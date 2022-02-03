@@ -173,6 +173,7 @@ export default defineComponent({
 $_size: 48px;
 $_dayAmount: 30;
 $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
+$_dayWidth: 128px;
 
 ._timeline {
   position: relative;
@@ -190,7 +191,7 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
   background: $_light;
 
   ._day-line {
-    margin-left: 128px;
+    margin-left: $_dayWidth;
     display: flex;
   }
 
@@ -215,8 +216,8 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
   position: absolute;
   left: 0; // js
   z-index: 1;
-  flex: 0 0 128px;
-  width: 128px;
+  flex: 0 0 $_dayWidth;
+  width: $_dayWidth;
   background: $_light;
   height: $_size;
   padding: 0 16px;
@@ -235,6 +236,7 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 
 ._room-line-wrapper {
   margin-top: $_size;
+  width: calc(#{$_roomLineWidth} + $_dayWidth);
 }
 
 ._room-line {
@@ -247,7 +249,7 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
   overflow: hidden;
   position: relative;
   display: flex;
-  margin-left: 128px;
+  margin-left: $_dayWidth;
 
   ._period {
     height: $_size;
