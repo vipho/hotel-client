@@ -236,7 +236,7 @@ $_dayWidth: 128px;
 
 ._room-line-wrapper {
   margin-top: $_size;
-  width: calc(#{$_roomLineWidth} + $_dayWidth);
+  width: calc(#{$_roomLineWidth} + #{$_dayWidth});
 }
 
 ._room-line {
