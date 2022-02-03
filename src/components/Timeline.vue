@@ -23,7 +23,7 @@
     </div>
 
     <nav class="overflow-auto">
-      <ul class="pagination _pagination justify-content-end">
+      <ul class="pagination _pagination">
         <li
             class="page-item _item _no-select"
             @click="currentDay = new Date(currentDay.getTime() - 1296000000)"
@@ -221,9 +221,14 @@ $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 
 ._pagination {
   margin: 0;
+  white-space: nowrap;
 
   ._item {
     cursor: default;
+
+    &:first-child {
+      margin-left: auto;
+    }
 
     ._link {
       text-align: center;

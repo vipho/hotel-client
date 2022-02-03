@@ -95,6 +95,7 @@ export default defineComponent({
 
 ._pagination {
   margin: 0;
+  white-space: nowrap;
   user-select: none;
 
   ._item {
