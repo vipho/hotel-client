@@ -5,7 +5,7 @@
         <form @submit.prevent="">
           <div class="mb-4">
             <label class="form-label">{{ $t("userNickname") }}</label>
-            <input type="email" class="form-control" :placeholder="$t('userNicknamePlaceholder')">
+            <input type="text" class="form-control" :placeholder="$t('userNicknamePlaceholder')">
           </div>
           <div class="mb-4">
             <label class="form-label">{{ $t("userPassword") }}</label>

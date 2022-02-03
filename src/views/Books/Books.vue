@@ -13,9 +13,9 @@
           <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">{{ $t('room') }}</th>
             <th scope="col">{{ $t('firstName') }}</th>
             <th scope="col">{{ $t('lastName') }}</th>
+            <th scope="col">{{ $t('room') }}</th>
             <th scope="col">{{ $t('dates') }}</th>
             <th scope="col">{{ $t('bookingService') }}</th>
             <th scope="col">{{ $t('status') }}</th>
@@ -24,27 +24,27 @@
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>#1</td>
             <td>Иван</td>
             <td>Иванов</td>
+            <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Booking</td>
             <td><span class="badge bg-primary">{{ $t('statusLiving') }}</span></td>
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>#1</td>
             <td>Иван</td>
             <td>Иванов</td>
+            <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Островок</td>
             <td><span class="badge bg-primary">{{ $t('statusLiving') }}</span></td>
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>#1</td>
             <td>Иван</td>
             <td>Иванов</td>
+            <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td></td>
             <td><span class="badge bg-primary">{{ $t('statusLiving') }}</span></td>
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="container py-3">
-      <Pagination></Pagination>
+      <Pagination :pagesAmount="999" @changeQuery="changeQuery"></Pagination>
     </div>
   </WrapperAuth>
 </template>
@@ -125,13 +125,13 @@ export default defineComponent({
     }
   },
   watch: {},
+  computed: {},
   methods: {
     changeQuery(p: any) {
       // @ts-ignore
       this.$refs.query.changeQuery(p)
     },
   },
-  computed: {},
 })
 </script>
 

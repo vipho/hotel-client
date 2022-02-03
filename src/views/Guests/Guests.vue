@@ -1,7 +1,8 @@
 <template>
   <WrapperAuth>
+    <Query ref="query"></Query>
     <div class="container py-3">
-      <Search></Search>
+      <Search @changeQuery="changeQuery"></Search>
     </div>
     <div class="container py-3 overflow-x-auto">
       <div class="overflow-auto">
@@ -35,7 +36,7 @@
       </div>
     </div>
     <div class="container py-3">
-      <Pagination></Pagination>
+      <Pagination :pagesAmount="100" @changeQuery="changeQuery"></Pagination>
     </div>
   </WrapperAuth>
 </template>
@@ -45,13 +46,25 @@ import {defineComponent} from 'vue';
 import WrapperAuth from '../../components/WrapperAuth.vue';
 import Search from "@/components/Search.vue";
 import Pagination from "@/components/Pagination.vue";
+import Query from "@/components/Query";
 
 export default defineComponent({
   name: "Home",
   components: {
+    Query,
     Pagination,
     Search,
     WrapperAuth,
+  },
+  props: {},
+  emits: {},
+  watch: {},
+  computed: {},
+  methods: {
+    changeQuery(p: any) {
+      // @ts-ignore
+      this.$refs.query.changeQuery(p)
+    },
   },
 })
 </script>

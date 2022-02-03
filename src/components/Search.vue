@@ -45,7 +45,7 @@ export default defineComponent({
   props: {
     selectors: {
       type: Object,
-      default: () => ([]),
+      default: () => ({}),
     },
   },
   emits: ['changeQuery'],
@@ -54,17 +54,14 @@ export default defineComponent({
     selectorValues,
     inputQuery: "",
   }),
-  created() {
-    if (this.$route.query.query !== undefined) {
-      this.query = this.$route.query.query + ""
-    }
-    for (const key of Object.keys(this.selectors)) {
-      if (this.$route.query[key] !== undefined) {
-        this.selectorValues[key] = this.$route.query[key] + ""
-      }
-    }
+  watch: {
+    '$route.query': {
+      handler() {
+        this.syncWithQuery()
+      },
+      immediate: true,
+    },
   },
-  watch: {},
   computed: {
     applied() {
       const applied: { type: string, key: string, value: string }[] = []
@@ -88,6 +85,20 @@ export default defineComponent({
     }
   },
   methods: {
+    syncWithQuery() {
+      if (this.$route.query.query !== undefined) {
+        this.query = this.$route.query.query + ""
+      } else {
+        this.query = ""
+      }
+      for (const key of Object.keys(this.selectors)) {
+        if (this.$route.query[key] !== undefined) {
+          this.selectorValues[key] = this.$route.query[key] + ""
+        } else {
+          this.selectorValues[key] = ""
+        }
+      }
+    },
     cancelApplied(type: string, key: string) {
       switch (type) {
         case "query":
@@ -100,21 +111,6 @@ export default defineComponent({
           break
       }
     },
-    // changeURLQuery() {
-    //   const query: { [key: string]: string } = {}
-    //   if (this.query !== "") {
-    //     query.query = this.query
-    //   }
-    //   if (this.page !== null) {
-    //     query.page = this.page + ""
-    //   }
-    //   for (const [key, value] of Object.entries(this.selectorValues)) {
-    //     if (value !== "") {
-    //       query[key] = value
-    //     }
-    //   }
-    //   this.$router.push({query})
-    // },
     search() {
       this.query = this.inputQuery
       this.$emit('changeQuery', {key: 'query', value: this.query})
