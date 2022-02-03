@@ -1,49 +1,68 @@
 <template>
-  <div>
-    <div class="_wrapper">
-      <div class="_info">
-        <div class="_room">{{ $t('room') }}</div>
-        <div v-for="room in sortedRooms" class="_room">{{ room.room }}</div>
+  <div
+      @scroll="onScroll"
+      ref="timeline"
+      class="_timeline"
+  >
+    <div
+        :style="{ top }"
+        class="_head-line"
+    >
+      <div
+          :style="{ left }"
+          class="_room"
+      >
+        <span>{{ $t('room') }}</span>
       </div>
-      <div class="_lines">
-        <div class="_day-line">
-          <div v-for="dates in timelineDates" class="_day">
-            <div class="_box">
-              <div>{{ dates.month }}</div>
-              <div>{{ dates.day }}</div>
-            </div>
+      <div class="_day-line">
+        <div v-for="dates in timelineDates" class="_day">
+          <div class="_box">
+            <div>{{ dates.month }}</div>
+            <div>{{ dates.day }}</div>
           </div>
         </div>
-        <div v-for="room in sortedRooms" class="_room-line">
+      </div>
+    </div>
+    <div class="_room-line-wrapper">
+      <div v-for="room in sortedRooms" class="_room-line">
+        <div
+            :style="{ left }"
+            class="_room"
+        >
+          <span>{{ room.room }}</span>
+        </div>
+        <div class="_period-line">
           <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}">
             <div class="_box"></div>
           </div>
         </div>
       </div>
     </div>
-
-    <nav class="overflow-auto">
-      <ul class="pagination _pagination">
-        <li
-            class="page-item _item _no-select"
-            @click="currentDay = new Date(currentDay.getTime() - 1296000000)"
-        >
-          <span class="page-link _link">&laquo;</span>
-        </li>
-        <li
-            class="page-item _item disabled"
-        >
-          <span class="page-link _link">{{ dateToString(currentDay) }} - {{ dateToString(new Date(currentDay.getTime() + (2592000000 - 86400000))) }}</span>
-        </li>
-        <li
-            class="page-item _item _no-select"
-            @click="currentDay = new Date(currentDay.getTime() + 1296000000)"
-        >
-          <span class="page-link _link">&raquo;</span>
-        </li>
-      </ul>
-    </nav>
   </div>
+
+  <nav class="overflow-auto">
+    <ul class="pagination _pagination">
+      <li
+          class="page-item _item _no-select"
+          @click="currentDay = new Date(currentDay.getTime() - 1296000000)"
+      >
+        <span class="page-link _link">&laquo;</span>
+      </li>
+      <li
+          class="page-item _item disabled"
+      >
+          <span class="page-link _link">{{
+              dateToString(currentDay)
+            }} - {{ dateToString(new Date(currentDay.getTime() + (2592000000 - 86400000))) }}</span>
+      </li>
+      <li
+          class="page-item _item _no-select"
+          @click="currentDay = new Date(currentDay.getTime() + 1296000000)"
+      >
+        <span class="page-link _link">&raquo;</span>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script lang="ts">
@@ -78,6 +97,8 @@ export default defineComponent({
     }
   },
   data: () => ({
+    left: '0px',
+    top: '0px',
     currentDay: ((): Date => {
       const d = new Date()
       d.setUTCHours(0)
@@ -133,6 +154,15 @@ export default defineComponent({
       const months = t('months', {returnObjects: true});
       return `${date.getUTCDate()} ${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
     },
+    onScroll() {
+      //@ts-ignore
+      const left: number = this.$refs.timeline.scrollLeft
+      //@ts-ignore
+      const top: number = this.$refs.timeline.scrollTop
+
+      this.left = `${left}px`
+      this.top = `${top}px`
+    },
   },
 })
 </script>
@@ -144,72 +174,96 @@ $_size: 48px;
 $_dayAmount: 30;
 $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 
-._wrapper {
-  display: flex;
+._timeline {
+  position: relative;
   background: $_light;
   margin-bottom: 1rem;
+  max-height: 300px;
+  overflow: auto;
 }
 
-._info {
-  ._room {
+._head-line {
+  position: absolute;
+  top: 0; // js
+  z-index: 2;
+  display: flex;
+  background: $_light;
+
+  ._day-line {
+    margin-left: 128px;
+    display: flex;
+  }
+
+  ._day {
+    flex-shrink: 0;
+    overflow: hidden;
+    width: $_size;
     height: $_size;
-    width: 100%;
-    padding: 0 16px;
     font-size: 12px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ._box {
+      line-height: 16px;
+    }
   }
 }
 
-._lines {
-  overflow-x: auto;
+._room {
+  position: absolute;
+  left: 0; // js
+  z-index: 1;
+  flex: 0 0 128px;
+  width: 128px;
+  background: $_light;
+  height: $_size;
+  padding: 0 16px;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  ._day-line {
-    height: $_size;
-    width: $_roomLineWidth;
+  span {
     overflow: hidden;
-
-    ._day {
-      float: left;
-      overflow: hidden;
-      width: $_size;
-      height: $_size;
-      font-size: 12px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      ._box {
-        line-height: 16px;
-      }
-    }
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+}
 
-  ._room-line {
+._room-line-wrapper {
+  margin-top: $_size;
+}
+
+._room-line {
+  display: flex;
+}
+
+._period-line {
+  height: $_size;
+  width: $_roomLineWidth;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  margin-left: 128px;
+
+  ._period {
     height: $_size;
-    width: $_roomLineWidth;
-    overflow: hidden;
-    position: relative;
+    position: absolute;
+    padding: 0 calc(#{$_size} / 4);
 
-    ._period {
-      height: $_size;
-      position: absolute;
-      padding: 0 calc(#{$_size} / 4);
+    ._box {
+      margin-top: calc(#{$_size} / 4);
+      height: calc(#{$_size} / 2);
+      width: 100%;
+      border-radius: 1000px;
+      background: $primary;
+      @include transition($btn-transition);
 
-      ._box {
-        margin-top: calc(#{$_size} / 4);
-        height: calc(#{$_size} / 2);
-        width: 100%;
-        border-radius: 1000px;
-        background: $primary;
-        @include transition($btn-transition);
-
-        &:hover {
-          background: shade-color($primary, $btn-hover-bg-tint-amount);
-        }
+      &:hover {
+        background: shade-color($primary, $btn-hover-bg-tint-amount);
       }
     }
   }

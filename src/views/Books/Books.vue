@@ -121,6 +121,201 @@ export default defineComponent({
             ],
           ],
         },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
+        {
+          room: '#4',
+          periods: [
+            [
+              new Date('2022-02-04'),
+              new Date('2022-02-09')
+            ],
+            [
+              new Date('2022-01-31'),
+              new Date('2022-02-03')
+            ],
+          ],
+        },
       ],
     }
   },
