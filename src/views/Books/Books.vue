@@ -75,36 +75,22 @@ export default defineComponent({
   },
   data() {
     return {
-      selectors: [
-        {
-          name: 'room',
-          desc: this.$t('room'),
-          parameters: [
-            {
-              key: '1',
-              desc: '#1',
-            },
-            {
-              key: '2',
-              desc: '#2',
-            },
-            {
-              key: '3',
-              desc: '#3',
-            },
-          ],
+      selectors: {
+        'room': {
+          name: this.$t('room'),
+          parameters: {
+            1: '#1',
+            2: '#2',
+            3: '#3',
+          },
         },
-        {
-          name: 'status',
-          desc: this.$t('status'),
-          parameters: [
-            {
-              key: 'living',
-              desc: this.$t('statusLiving'),
-            },
-          ],
+        'status': {
+          name: this.$t('status'),
+          parameters: {
+            'living': this.$t('statusLiving'),
+          },
         },
-      ],
+      },
       rooms: [
         {
           room: '#1',
