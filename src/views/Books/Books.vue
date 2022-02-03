@@ -1,10 +1,11 @@
 <template>
   <WrapperAuth>
+    <Query ref="query"></Query>
     <div class="container py-3">
       <Timeline :rooms="rooms"></Timeline>
     </div>
     <div class="container py-3">
-      <Search :selectors="selectors"></Search>
+      <Search :selectors="selectors" @changeQuery="changeQuery"></Search>
     </div>
     <div class="container py-3">
       <div class="overflow-auto">
@@ -64,10 +65,12 @@ import WrapperAuth from '@/components/WrapperAuth.vue';
 import Timeline from "@/components/Timeline.vue";
 import Search from "@/components/Search.vue";
 import Pagination from "@/components/Pagination.vue";
+import Query from "@/components/Query";
 
 export default defineComponent({
   name: "Books",
   components: {
+    Query,
     Pagination,
     Search,
     Timeline,
@@ -120,7 +123,15 @@ export default defineComponent({
         },
       ],
     }
-  }
+  },
+  watch: {},
+  methods: {
+    changeQuery(p: any) {
+      // @ts-ignore
+      this.$refs.query.changeQuery(p)
+    },
+  },
+  computed: {},
 })
 </script>
 

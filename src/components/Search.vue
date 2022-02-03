@@ -48,6 +48,7 @@ export default defineComponent({
       default: () => ([]),
     },
   },
+  emits: ['changeQuery'],
   data: () => ({
     query: "",
     selectorValues,
@@ -91,36 +92,38 @@ export default defineComponent({
       switch (type) {
         case "query":
           this.query = ""
+          this.$emit('changeQuery', {key: 'query', value: ""})
           break
         case "selector":
           this.selectorValues[key] = ""
+          this.$emit('changeQuery', {key, value: ""})
           break
       }
-
-      this.changeURLQuery()
     },
-    changeURLQuery() {
-      const query: { [key: string]: string } = {}
-      if (this.query !== "") {
-        query.query = this.query
-      }
-      for (const [key, value] of Object.entries(this.selectorValues)) {
-        if (value !== "") {
-          query[key] = value
-        }
-      }
-      this.$router.push({query})
-    },
+    // changeURLQuery() {
+    //   const query: { [key: string]: string } = {}
+    //   if (this.query !== "") {
+    //     query.query = this.query
+    //   }
+    //   if (this.page !== null) {
+    //     query.page = this.page + ""
+    //   }
+    //   for (const [key, value] of Object.entries(this.selectorValues)) {
+    //     if (value !== "") {
+    //       query[key] = value
+    //     }
+    //   }
+    //   this.$router.push({query})
+    // },
     search() {
       this.query = this.inputQuery
-      this.inputQuery = ""
+      this.$emit('changeQuery', {key: 'query', value: this.query})
 
-      this.changeURLQuery()
+      this.inputQuery = ""
     },
     select(name: string, value: string) {
       this.selectorValues[name] = value
-
-      this.changeURLQuery()
+      this.$emit('changeQuery', {key: name, value})
     },
   },
 })
