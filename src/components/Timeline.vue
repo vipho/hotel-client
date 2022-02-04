@@ -1,31 +1,36 @@
 <template>
-  <div
-      @scroll="onScroll"
-      ref="timeline"
-      class="_timeline"
-  >
-    <div>
-      <div :style="{ left, top }" class="_room _room-heading">
+  <div class="_timeline">
+    <div class="_head-line">
+      <div class="_room">
         <span>{{ $t('room') }}</span>
       </div>
-      <div class="_room-wrapper" :style="{ left }">
-        <div v-for="room in sortedRooms" class="_room">
-          <span>{{ room.room }}</span>
+
+      <div class="_day-line-wrapper">
+        <div :style="{ 'margin-left': left }" class="_day-line">
+          <div v-for="dates in timelineDates" class="_day">
+            <div class="_box">
+              <div>{{ dates.month }}</div>
+              <div>{{ dates.day }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="d-flex">
-      <div :style="{ top }" class="_day-line">
-        <div v-for="dates in timelineDates" class="_day">
-          <div class="_box">
-            <div>{{ dates.month }}</div>
-            <div>{{ dates.day }}</div>
+    <div class="_content">
+      <div class="_room-col-wrapper">
+        <div :style="{ 'margin-top': top }" class="_room-col">
+          <div v-for="room in sortedRooms" class="_room">
+            <span>{{ room.room }}</span>
           </div>
         </div>
       </div>
 
-      <div class="_period-line-wrapper">
+      <div
+          @scroll="onScroll"
+          ref="timeline"
+          class="_period-line-wrapper"
+      >
         <div v-for="room in sortedRooms" class="_period-line">
           <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}">
             <div class="_box"></div>
@@ -44,11 +49,23 @@
         <span class="page-link _link">&laquo;</span>
       </li>
       <li
-          class="page-item _item disabled"
+          class="page-item _item _no-select"
+          @click="currentDay = new Date(currentDay.getTime() - 86400000)"
       >
-          <span class="page-link _link">{{
-              dateToString(currentDay)
-            }} - {{ dateToString(new Date(currentDay.getTime() + (2592000000 - 86400000))) }}</span>
+        <span class="page-link _link">&lt;</span>
+      </li>
+      <li class="page-item _item _item-dates disabled">
+          <span class="page-link _link">
+            {{ dateToString(currentDay) }} - {{
+              dateToString(new Date(currentDay.getTime() + (2592000000 - 86400000)))
+            }}
+          </span>
+      </li>
+      <li
+          class="page-item _item _no-select"
+          @click="currentDay = new Date(currentDay.getTime() + 86400000)"
+      >
+        <span class="page-link _link">&gt;</span>
       </li>
       <li
           class="page-item _item _no-select"
@@ -155,8 +172,8 @@ export default defineComponent({
       //@ts-ignore
       const top: number = this.$refs.timeline.scrollTop
 
-      this.left = `${left}px`
-      this.top = `${top}px`
+      this.left = `-${left}px`
+      this.top = `-${top}px`
     },
   },
 })
@@ -169,26 +186,15 @@ $_size: 48px;
 $_dayAmount: 30;
 $_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
 $_dayWidth: 128px;
+$_dayColHeight: 300px;
 
 ._timeline {
-  position: relative;
   background: $_light;
   margin-bottom: 1rem;
-  max-height: 300px;
-  overflow: auto;
 }
 
-._room-heading {
-  position: absolute;
-  left: 0; // js
-  z-index: 3;
-}
-
-._room-wrapper {
-  position: absolute;
-  left: 0; // js
-  top: $_size;
-  z-index: 1;
+._head-line {
+  display: flex;
 }
 
 ._room {
@@ -210,13 +216,13 @@ $_dayWidth: 128px;
   }
 }
 
+._day-line-wrapper {
+  overflow: hidden;
+}
+
 ._day-line {
-  position: absolute;
-  top: 0; // js
-  z-index: 2;
   display: flex;
   background: $_light;
-  margin-left: $_dayWidth;
 
   ._day {
     flex-shrink: 0;
@@ -235,9 +241,25 @@ $_dayWidth: 128px;
   }
 }
 
+._content {
+  display: flex;
+}
+
+._room-col-wrapper {
+  overflow: hidden;
+  flex: 0 0 $_dayWidth;
+  width: $_dayWidth;
+}
+
+._room-col {
+  height: $_dayColHeight;
+  width: $_dayWidth;
+  flex: 0 0 $_dayWidth;
+}
+
 ._period-line-wrapper {
-  margin-top: $_size;
-  width: calc(#{$_roomLineWidth} + #{$_dayWidth});
+  height: $_dayColHeight;
+  overflow: auto;
 }
 
 ._period-line {
@@ -246,7 +268,6 @@ $_dayWidth: 128px;
   overflow: hidden;
   position: relative;
   display: flex;
-  margin-left: $_dayWidth;
 
   ._period {
     height: $_size;
@@ -275,6 +296,11 @@ $_dayWidth: 128px;
 ._pagination {
   margin: 0;
   white-space: nowrap;
+
+  ._item-dates {
+    width: 256px;
+    text-align: center;
+  }
 
   ._item {
     cursor: default;
