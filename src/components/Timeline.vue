@@ -2,7 +2,7 @@
   <div class="_timeline">
     <div class="_head-line">
       <div class="_room">
-        <span>{{ $t('room') }}</span>
+        <span></span>
       </div>
 
       <div class="_day-line-wrapper">
@@ -32,6 +32,9 @@
           class="_period-line-wrapper"
       >
         <div v-for="room in sortedRooms" class="_period-line">
+          <div class="_square-wrapper">
+            <div v-for="_ in dayAmount" class="_square"></div>
+          </div>
           <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}">
             <div class="_box"></div>
           </div>
@@ -109,6 +112,7 @@ export default defineComponent({
     }
   },
   data: () => ({
+    dayAmount,
     left: '0px',
     top: '0px',
     currentDay: ((): Date => {
@@ -189,7 +193,7 @@ $_dayWidth: 128px;
 $_dayColHeight: 300px;
 
 ._timeline {
-  background: $_light;
+  //background: $_light;
   margin-bottom: 1rem;
 }
 
@@ -200,7 +204,7 @@ $_dayColHeight: 300px;
 ._room {
   flex: 0 0 $_dayWidth;
   width: $_dayWidth;
-  background: $_light;
+  //background: $_light;
   height: $_size;
   padding: 0 16px;
   font-size: 12px;
@@ -222,7 +226,7 @@ $_dayColHeight: 300px;
 
 ._day-line {
   display: flex;
-  background: $_light;
+  //background: $_light;
 
   ._day {
     flex-shrink: 0;
@@ -268,6 +272,25 @@ $_dayColHeight: 300px;
   overflow: hidden;
   position: relative;
   display: flex;
+  box-sizing: border-box;
+
+  &:not(&:last-child) {
+    border-bottom: solid 1px #efefef;
+  }
+
+  ._square-wrapper {
+    display: flex;
+
+    ._square {
+      height: $_size;
+      width: $_size;
+      box-sizing: border-box;
+
+      &:not(&:last-child) {
+        border-right: solid 1px #efefef;
+      }
+    }
+  }
 
   ._period {
     height: $_size;

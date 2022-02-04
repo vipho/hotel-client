@@ -1,6 +1,8 @@
 <template>
   <Header></Header>
-  <slot></slot>
+  <div class="py-3">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">
