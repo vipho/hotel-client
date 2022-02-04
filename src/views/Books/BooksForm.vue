@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="">
+  <form @submit.prevent="$toast($t('NotAllRequiredFieldsFilled'))">
     <div class="row">
       <div class="col mb-3">
         <label class="form-label">Дата начала</label>

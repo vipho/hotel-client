@@ -1,11 +1,14 @@
 import {createApp} from 'vue'
-import App from './App.vue'
+import App, {AppProps} from './App.vue'
 import router from './router'
 import store from './store'
 import {t} from './utils/locale'
 import config from './utils/config'
 
-require('bootstrap/dist/js/bootstrap.bundle')
+//@ts-ignore
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle')
+
+console.log(App)
 
 createApp(App)
   .use(router)
@@ -13,6 +16,7 @@ createApp(App)
   .mixin({
     methods: {
       $t: t,
+      $toast: (message: string) => AppProps.toast.notify(message)
     },
     computed: {
       $config: () => config,

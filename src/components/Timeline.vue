@@ -184,11 +184,13 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@use 'sass:math';
+
 @import "~@/style/utils";
 
 $_size: 48px;
 $_dayAmount: 30;
-$_roomLineWidth: calc(#{$_size} * #{$_dayAmount});
+$_roomLineWidth: $_size * $_dayAmount;
 $_dayWidth: 128px;
 $_dayColHeight: 300px;
 
@@ -295,11 +297,11 @@ $_dayColHeight: 300px;
   ._period {
     height: $_size;
     position: absolute;
-    padding: 0 calc(#{$_size} / 4);
+    padding: 0 math.div($_size, 4);
 
     ._box {
-      margin-top: calc(#{$_size} / 4);
-      height: calc(#{$_size} / 2);
+      margin-top: math.div($_size, 4);
+      height: math.div($_size, 2);
       width: 100%;
       border-radius: 1000px;
       background: $primary;

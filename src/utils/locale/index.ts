@@ -51,6 +51,7 @@ document.documentElement.lang = lang
                 'toBook': 'Забронировать',
                 'booking': 'Бронирование',
                 'listOfBooks': 'Список броней',
+                'NotAllRequiredFieldsFilled': 'Не заполнены необходимые поля.',
             }
         },
     }
