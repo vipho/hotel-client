@@ -47,7 +47,7 @@
     <ul class="pagination _pagination">
       <li
           class="page-item _item _no-select"
-          @click="currentDay = new Date(currentDay.getTime() - 1296000000)"
+          @click="currentDay = new Date(currentDay.getTime() - 1209600000)"
       >
         <span class="page-link _link">&laquo;</span>
       </li>
@@ -72,7 +72,7 @@
       </li>
       <li
           class="page-item _item _no-select"
-          @click="currentDay = new Date(currentDay.getTime() + 1296000000)"
+          @click="currentDay = new Date(currentDay.getTime() + 1209600000)"
       >
         <span class="page-link _link">&raquo;</span>
       </li>
