@@ -4,17 +4,19 @@
       ref="timeline"
       class="_timeline"
   >
-    <div
-        :style="{ top }"
-        class="_head-line"
-    >
-      <div
-          :style="{ left }"
-          class="_room"
-      >
+    <div>
+      <div :style="{ left, top }" class="_room _room-heading">
         <span>{{ $t('room') }}</span>
       </div>
-      <div class="_day-line">
+      <div class="_room-wrapper" :style="{ left }">
+        <div v-for="room in sortedRooms" class="_room">
+          <span>{{ room.room }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div :style="{ top }" class="_day-line">
         <div v-for="dates in timelineDates" class="_day">
           <div class="_box">
             <div>{{ dates.month }}</div>
@@ -22,16 +24,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="_room-line-wrapper">
-      <div v-for="room in sortedRooms" class="_room-line">
-        <div
-            :style="{ left }"
-            class="_room"
-        >
-          <span>{{ room.room }}</span>
-        </div>
-        <div class="_period-line">
+
+      <div class="_period-line-wrapper">
+        <div v-for="room in sortedRooms" class="_period-line">
           <div v-for="period in room.periods" class="_period" :style="{'left': period.offset, 'width': period.width}">
             <div class="_box"></div>
           </div>
@@ -183,39 +178,20 @@ $_dayWidth: 128px;
   overflow: auto;
 }
 
-._head-line {
+._room-heading {
   position: absolute;
-  top: 0; // js
-  z-index: 2;
-  display: flex;
-  background: $_light;
+  left: 0; // js
+  z-index: 3;
+}
 
-  ._day-line {
-    margin-left: $_dayWidth;
-    display: flex;
-  }
-
-  ._day {
-    flex-shrink: 0;
-    overflow: hidden;
-    width: $_size;
-    height: $_size;
-    font-size: 12px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    ._box {
-      line-height: 16px;
-    }
-  }
+._room-wrapper {
+  position: absolute;
+  left: 0; // js
+  top: $_size;
+  z-index: 1;
 }
 
 ._room {
-  position: absolute;
-  left: 0; // js
-  z-index: 1;
   flex: 0 0 $_dayWidth;
   width: $_dayWidth;
   background: $_light;
@@ -234,13 +210,34 @@ $_dayWidth: 128px;
   }
 }
 
-._room-line-wrapper {
-  margin-top: $_size;
-  width: calc(#{$_roomLineWidth} + #{$_dayWidth});
+._day-line {
+  position: absolute;
+  top: 0; // js
+  z-index: 2;
+  display: flex;
+  background: $_light;
+  margin-left: $_dayWidth;
+
+  ._day {
+    flex-shrink: 0;
+    overflow: hidden;
+    width: $_size;
+    height: $_size;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ._box {
+      line-height: 16px;
+    }
+  }
 }
 
-._room-line {
-  display: flex;
+._period-line-wrapper {
+  margin-top: $_size;
+  width: calc(#{$_roomLineWidth} + #{$_dayWidth});
 }
 
 ._period-line {
