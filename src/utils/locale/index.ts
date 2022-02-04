@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 
-const DEFAULT_LANG = 'ru'
+// BCP47 language tags
+const DEFAULT_LANG = 'ru-RU'
 
 export const setLang = (lang: string) => {
     localStorage.setItem('lang', lang)
@@ -15,11 +16,15 @@ export const getLang = () : string => {
     return lang
 }
 
-i18next.init({
-    lng: getLang(),
+const lang = getLang()
+
+document.documentElement.lang = lang
+
+  i18next.init({
+    lng: lang,
     debug: process.env.NODE_ENV !== 'production',
     resources: {
-        ru: {
+        'ru-RU': {
             translation: {
                 'hello': 'Hello world!',
                 'project': 'VIPHO.Hotel',
