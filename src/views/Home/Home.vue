@@ -1,7 +1,7 @@
 <template>
   <WrapperAuth>
     <div class="container py-5 d-flex justify-content-center">
-      <div class="_form">
+      <div class="_g_w-sm">
         <form @submit.prevent="">
           <div class="mb-4">
             <label class="form-label">{{ $t("userNickname") }}</label>
@@ -42,8 +42,4 @@ export default defineComponent({
 <style scoped lang="scss">
 @import "~@/style/utils";
 
-._form {
-  width: 100%;
-  max-width: 450px;
-}
 </style>

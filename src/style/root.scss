@@ -3,6 +3,13 @@
 @import "variables";
 @import "~bootstrap/scss/bootstrap";
 
+@each $name, $width in $grid-breakpoints {
+  ._g_w-#{$name} {
+    width: 100%;
+    max-width: $width;
+  }
+}
+
 html {
   font-family: 'Montserrat', sans-serif;
 }

@@ -43,6 +43,9 @@ i18next.init({
                 'signIn': 'Войти',
                 'toSearch': 'Искать',
                 'search': 'Поиск',
+                'toBook': 'Забронировать',
+                'booking': 'Бронирование',
+                'listOfBooks': 'Список броней',
             }
         },
     }

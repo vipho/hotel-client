@@ -1,10 +1,24 @@
 <template>
   <WrapperAuth>
     <Query ref="query"></Query>
+
     <div class="container py-3">
-      <Timeline :rooms="rooms"></Timeline>
+      <h2 class="display-6 mb-4">{{ $t('booking') }}</h2>
+
+      <Timeline :rooms="timelineRooms"></Timeline>
     </div>
+
+    <div class="container pt-3">
+      <BooksForm
+          :rooms="rooms"
+          :selectedRoom="selectedRoom"
+          @change="selectedRoom = $event"
+      ></BooksForm>
+    </div>
+
     <div class="container py-3">
+      <h2 class="display-6 mb-4">{{ $t('listOfBooks') }}</h2>
+
       <Search :selectors="selectors" @changeQuery="changeQuery"></Search>
     </div>
     <div class="container py-3">
@@ -66,10 +80,12 @@ import Timeline from "@/components/Timeline.vue";
 import Search from "@/components/Search.vue";
 import Pagination from "@/components/Pagination.vue";
 import Query from "@/components/Query";
+import BooksForm from "@/views/Books/BooksForm.vue";
 
 export default defineComponent({
   name: "Books",
   components: {
+    BooksForm,
     Query,
     Pagination,
     Search,
@@ -94,7 +110,30 @@ export default defineComponent({
           },
         },
       },
+      selectedRoom: '',
       rooms: [
+        {
+          key: '1',
+          desc: '#1',
+        },
+        {
+          key: '2',
+          desc: '#2',
+        },
+        {
+          key: '3',
+          desc: '#3',
+        },
+        {
+          key: '4',
+          desc: '#4',
+        },
+        {
+          key: '5',
+          desc: '#5',
+        },
+      ],
+      timelineRooms: [
         {
           room: '#1',
           periods: [
