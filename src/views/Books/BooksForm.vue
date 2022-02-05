@@ -3,11 +3,21 @@
     <div class="row">
       <div class="col mb-3">
         <label class="form-label">Дата начала</label>
-        <input type="text" class="form-control" placeholder="01.01.2021">
+        <input
+            v-maska="'##.##.####'"
+            type="text"
+            class="form-control"
+            placeholder="01.01.2022"
+        >
       </div>
       <div class="col mb-3">
         <label class="form-label">Дата окончания</label>
-        <input type="text" class="form-control" placeholder="01.01.2021">
+        <input
+            v-maska="'##.##.####'"
+            type="text"
+            class="form-control"
+            placeholder="14.01.2022"
+        >
       </div>
     </div>
     <div class="row">

@@ -2,6 +2,8 @@ import {createApp} from 'vue'
 import App, {AppProps} from './App.vue'
 import router from './router'
 import store from './store'
+import Maska from 'maska'
+
 import {t} from './utils/locale'
 import config from './utils/config'
 
@@ -13,6 +15,7 @@ console.log(App)
 createApp(App)
   .use(router)
   .use(store)
+  .use(Maska)
   .mixin({
     methods: {
       $t: t,
