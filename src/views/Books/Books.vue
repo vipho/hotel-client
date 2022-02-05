@@ -5,7 +5,7 @@
     <div class="container py-3">
       <h2 class="display-6 mb-4">{{ $t('booking') }}</h2>
 
-      <Timeline :rooms="timelineRooms"></Timeline>
+      <Timeline :rooms="timelineRooms" :showWeekDay="true"></Timeline>
     </div>
 
     <div class="container pt-3">

@@ -33,6 +33,7 @@ document.documentElement.lang = lang
                 'booksPage': 'Брони',
                 'settingsPage': 'Настройки',
                 'months': ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+                'weekDays': ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
                 'room': 'Номер',
                 'timeline': 'Таймлайн',
                 'firstName': 'Имя',

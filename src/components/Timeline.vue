@@ -10,7 +10,8 @@
           <div v-for="dates in timelineDates" class="_day">
             <div class="_box">
               <div>{{ dates.month }}</div>
-              <div>{{ dates.day }}</div>
+              <div v-if="showWeekDay">{{ dates.day }} {{ dates.weekDay }}</div>
+              <div v-else>{{ dates.day }}</div>
             </div>
           </div>
         </div>
@@ -106,6 +107,10 @@ const oneDay = 86400000
 export default defineComponent({
   name: "Timeline",
   props: {
+    showWeekDay: {
+      type: Boolean,
+      default: false,
+    },
     rooms: {
       type: Object,
       required: true,
@@ -131,10 +136,12 @@ export default defineComponent({
       for (let i = 0; i < dayAmount; i++) {
         const date = new Date(this.currentDay.getTime() + (i * oneDay))
         const months = t('months', {returnObjects: true});
+        const weekDays = t('weekDays', {returnObjects: true});
 
         dates.push({
           month: months[date.getUTCMonth()],
           day: date.getUTCDate(),
+          weekDay: weekDays[date.getUTCDay()],
         })
       }
       return dates
