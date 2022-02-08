@@ -49,6 +49,8 @@ document.documentElement.lang = lang
                 'search': 'Поиск',
                 'toBook': 'Забронировать',
                 'NotAllRequiredFieldsFilled': 'Не заполнены необходимые поля.',
+                'findAvailableRooms': 'Найти доступные комнаты',
+                'availableRoomsByDates': 'Доступные комнаты с {{checkIn}} по {{checkOut}}',
             }
         },
     }
