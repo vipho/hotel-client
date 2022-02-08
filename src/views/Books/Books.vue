@@ -27,8 +27,7 @@
           <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">{{ $t('firstName') }}</th>
-            <th scope="col">{{ $t('lastName') }}</th>
+            <th scope="col">{{ $t('fullName') }}</th>
             <th scope="col">{{ $t('room') }}</th>
             <th scope="col">{{ $t('dates') }}</th>
             <th scope="col">{{ $t('bookingService') }}</th>
@@ -38,8 +37,7 @@
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Иван</td>
-            <td>Иванов</td>
+            <td>Иван Иванов</td>
             <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Booking</td>
@@ -47,8 +45,7 @@
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>Иван</td>
-            <td>Иванов</td>
+            <td>Иван Иванов</td>
             <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td>Островок</td>
@@ -56,8 +53,7 @@
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>Иван</td>
-            <td>Иванов</td>
+            <td>Иван Иванов</td>
             <td>#1</td>
             <td>01.02.2022 - 05.02.2022</td>
             <td></td>
