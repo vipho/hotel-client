@@ -2,8 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import {nextTick} from 'vue';
 import {t} from '@/utils/locale'
 import Home from '@/views/Home/Home.vue'
+import Booking from '@/views/Booking/Booking.vue'
 import Books from '@/views/Books/Books.vue'
-import Guests from '@/views/Guests/Guests.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,19 +15,19 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/booking',
+    name: 'Booking',
+    component: Booking,
+    meta: {
+      title: t('bookingPage'),
+    },
+  },
+  {
     path: '/books',
     name: 'Books',
     component: Books,
     meta: {
       title: t('booksPage'),
-    },
-  },
-  {
-    path: '/guests',
-    name: 'Guests',
-    component: Guests,
-    meta: {
-      title: t('guestsPage'),
     },
   },
 ]

@@ -50,7 +50,7 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "BooksForm",
+  name: "BookingForm",
   components: {},
   props: {
     rooms: {
