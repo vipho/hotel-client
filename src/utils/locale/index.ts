@@ -31,6 +31,7 @@ document.documentElement.lang = lang
                 'homePage': 'Главная',
                 'bookingPage': 'Бронирование',
                 'booksPage': 'Список броней',
+                'bookPage': 'Бронь #{{id}}',
                 'months': ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
                 'weekDays': ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
                 'room': 'Номер',
@@ -51,6 +52,10 @@ document.documentElement.lang = lang
                 'NotAllRequiredFieldsFilled': 'Не заполнены необходимые поля.',
                 'findAvailableRooms': 'Найти доступные комнаты',
                 'availableRoomsByDates': 'Доступные комнаты с {{checkIn}} по {{checkOut}}',
+                'bookManagement': 'Управление бронью',
+                'documents': 'Документы',
+                'edit': 'Редактировать',
+                'cancel': 'Отменить',
             }
         },
     }

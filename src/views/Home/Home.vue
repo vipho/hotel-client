@@ -27,15 +27,20 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import WrapperAuth from "@/components/WrapperAuth.vue";
+import {setTitle} from "@/utils/meta";
+import {t} from "@/utils/locale";
 
 export default defineComponent({
   name: "Home",
   components: {WrapperAuth},
   props: {},
   data: () => ({}),
+  created() {
+    setTitle(t('homePage'))
+  },
+  watch: {},
   computed: {},
   methods: {},
-  watch: {},
 })
 </script>
 

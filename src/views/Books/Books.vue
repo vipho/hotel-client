@@ -19,7 +19,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr @click="$router.push({ name: 'Book', params: { id: 1 } })">
             <th scope="row">1</th>
             <td>Иван Иванов</td>
             <td>#1</td>
@@ -59,6 +59,8 @@ import WrapperAuth from '@/components/WrapperAuth.vue';
 import Search from "@/components/Search.vue";
 import Pagination from "@/components/Pagination.vue";
 import Query from "@/components/Query";
+import {setTitle} from "@/utils/meta";
+import {t} from "@/utils/locale";
 
 export default defineComponent({
   name: "Books",
@@ -87,6 +89,9 @@ export default defineComponent({
         },
       },
     }
+  },
+  created() {
+    setTitle(t('booksPage'))
   },
   watch: {},
   computed: {},

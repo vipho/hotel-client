@@ -19,6 +19,8 @@ import {defineComponent} from 'vue'
 import BookingForm from "@/views/Booking/BookingForm.vue";
 import Timeline from "@/components/Timeline.vue";
 import WrapperAuth from "@/components/WrapperAuth.vue";
+import {setTitle} from "@/utils/meta";
+import {t} from "@/utils/locale";
 
 export default defineComponent({
   name: "Booking",
@@ -274,6 +276,9 @@ export default defineComponent({
         },
       ],
     }
+  },
+  created() {
+    setTitle(t('bookingPage'))
   },
   watch: {},
   computed: {},
