@@ -56,6 +56,12 @@ document.documentElement.lang = lang
                 'documents': 'Документы',
                 'edit': 'Редактировать',
                 'cancel': 'Отменить',
+                'contracts': 'Договора',
+                'contractName': 'Название договора',
+                'newContract': 'Новый договор',
+                'generate': 'Сгенерировать',
+                'save': 'Сохранить',
+                'delete': 'Удалить',
             }
         },
     }
