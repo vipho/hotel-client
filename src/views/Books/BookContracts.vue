@@ -44,6 +44,22 @@
       </div>
     </div>
   </div>
+
+  <form @submit.prevent>
+    <div class="row">
+      <div class="col-auto mt-3">
+        <select class="form-select _select">
+          <option selected>{{ $t('newContract') }}</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="col-auto mt-3">
+        <button type="submit" class="btn btn-primary">{{ $t('create') }}</button>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script lang="ts">
@@ -71,6 +87,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "~@/style/root";
 </style>

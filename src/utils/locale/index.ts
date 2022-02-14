@@ -63,6 +63,7 @@ document.documentElement.lang = lang
                 'save': 'Сохранить',
                 'create': 'Создать',
                 'delete': 'Удалить',
+                'open': 'Открыть',
             }
         },
     }

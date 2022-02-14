@@ -29,10 +29,10 @@
   <div class="py-3 row">
     <div class="col col-sm-6 col-12">
       <p class="lead text-center">{{ $t('availableRoomsByDates', {checkIn: '01.01.2022', checkOut: '14.01.2022'}) }}</p>
-      <ul class="list-group">
-        <li v-for="room in rooms" class="list-group-item _room">
-          <span class="_room-desc">{{ room.desc }}</span>
-          <button class="btn btn-primary _room-button">{{ $t('toBook') }}</button>
+      <ul class="list-group _list">
+        <li v-for="room in rooms" class="list-group-item">
+          <span class="_list-desc">{{ room.desc }}</span>
+          <button class="btn btn-primary _list-button">{{ $t('toBook') }}</button>
         </li>
       </ul>
     </div>
@@ -73,11 +73,14 @@ export default defineComponent({
 <style scoped lang="scss">
 @import "~@/style/utils";
 
-._room {
-  display: flex;
-  align-items: center;
+._list {
 
-  ._room-desc {
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  ._list-desc {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -85,8 +88,9 @@ export default defineComponent({
     flex-grow: 1;
   }
 
-  ._room-button {
+  ._list-button {
     flex: 0 0 0;
+    margin-left: 1rem;
   }
 }
 </style>
