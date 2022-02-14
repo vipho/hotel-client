@@ -10,8 +10,6 @@ import config from './utils/config'
 //@ts-ignore
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle')
 
-console.log(App)
-
 createApp(App)
   .use(router)
   .use(store)

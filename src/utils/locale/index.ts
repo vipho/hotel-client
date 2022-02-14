@@ -61,6 +61,7 @@ document.documentElement.lang = lang
                 'newContract': 'Новый договор',
                 'generate': 'Сгенерировать',
                 'save': 'Сохранить',
+                'create': 'Создать',
                 'delete': 'Удалить',
             }
         },

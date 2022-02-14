@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import {nextTick} from 'vue';
-import {t} from '@/utils/locale'
 import Home from '@/views/Home/Home.vue'
 import Booking from '@/views/Booking/Booking.vue'
 import Books from '@/views/Books/Books.vue'
