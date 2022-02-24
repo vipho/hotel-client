@@ -13,6 +13,9 @@
           <li class="nav-item">
             <router-link active-class="active" class="nav-link" :to="{name: 'Books'}">{{$t('booksPage')}}</router-link>
           </li>
+          <li class="nav-item">
+            <router-link active-class="active" class="nav-link" :to="{name: 'Profile'}">{{$t('profilePage')}}</router-link>
+          </li>
         </ul>
       </div>
     </div>

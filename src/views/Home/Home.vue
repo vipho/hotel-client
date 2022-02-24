@@ -1,6 +1,9 @@
 <template>
-  <WrapperAuth>
-    <div class="container py-5 d-flex justify-content-center">
+  <WrapperGuest>
+    <div class="py-5 text-center">
+      <h1 class="display-5">VIPHO.Hotel</h1>
+    </div>
+    <div class="container pb-5 d-flex justify-content-center">
       <div class="_g_w-sm">
         <form @submit.prevent="">
           <div class="mb-4">
@@ -20,19 +23,19 @@
         </form>
       </div>
     </div>
-  </WrapperAuth>
+  </WrapperGuest>
   <component :is="'script'" src="https://www.google.com/recaptcha/api.js" async defer></component>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import WrapperAuth from "@/components/WrapperAuth.vue";
 import {setTitle} from "@/utils/meta";
 import {t} from "@/utils/locale";
+import WrapperGuest from "@/components/WrapperGuest.vue";
 
 export default defineComponent({
   name: "Home",
-  components: {WrapperAuth},
+  components: {WrapperGuest},
   props: {},
   data: () => ({}),
   created() {

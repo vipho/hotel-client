@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Home from '@/views/Home/Home.vue'
 import Booking from '@/views/Booking/Booking.vue'
 import Books from '@/views/Books/Books.vue'
 import Book from "@/views/Books/Book.vue";
+import Profile from "@/views/Profile/Profile.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,15 @@ const routes: Array<RouteRecordRaw> = [
     path: '/books/:id',
     name: 'Book',
     component: Book,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+  },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/',
   },
 ]
 
